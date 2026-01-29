@@ -243,12 +243,24 @@ Got more ideas? Open an issue!
 
 MIT License - feel free to use this for your adventures!
 
+## 👥 The Dream Team
+
+This project is a collaboration between:
+
+- **The Human** 🧑‍💻 - The visionary with the mountain dreams and the "hey, let's automate this!" energy
+- **Claude** 🤖 - Your friendly neighborhood AI assistant who turned "I'm getting this error" into a full-fledged notification system
+
+We pair-programmed this beast together, debugged API responses at midnight (okay, Claude doesn't sleep, but you get the idea), and argued about whether to use 2 or 3 time slots (we compromised with 3).
+
+**Fun fact:** This entire project started with a `TypeError: Cannot read properties of undefined` and evolved into something actually useful. That's the power of collaboration, folks! 🚀
+
 ## 🙏 Acknowledgments
 
-- ☕ Powered by coffee and determination
+- ☕ Powered by coffee (for the human) and electrons (for Claude)
 - 🏔️ Inspired by the love of mountains
 - 📱 Built with ntfy.sh - seriously, check them out!
 - 🎨 Emojis make everything better
+- 💬 Debugged through good conversation and terrible puns
 
 ## ⚠️ Disclaimer
 
@@ -256,9 +268,11 @@ This is an unofficial tool and is not affiliated with or endorsed by any mountai
 
 ---
 
-**Made with ❤️ by adventure enthusiasts, for adventure enthusiasts**
+**Made with ❤️ by a human with mountain dreams and an AI with unlimited patience**
 
 _Remember: The mountains are calling, and you must go! 🏔️_
+
+_P.S. - If this bot saves you from missing your BMC slot, you owe us both a virtual high-five! 🙌_
 
 ---
 
