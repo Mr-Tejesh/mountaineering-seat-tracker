@@ -8,7 +8,7 @@ dotenv.config();
 export async function checkSeats() {
   try {
 
-        // Debug: Check if environment variables are set (without exposing values)
+    // Debug: Check if environment variables are set (without exposing values)
     console.log("🔍 Environment Check:");
     console.log("  API_URL exists:", !!process.env.API_URL);
     console.log("  NOTIFICATION_URL exists:", !!process.env.NOTIFICATION_URL);
@@ -38,7 +38,31 @@ export async function checkSeats() {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
+    // Add this right after getting the data, around line 44
     const data = await response.json();
+
+    // 🔍 DEBUG: Log the actual response structure
+    console.log("📊 API Response Debug:");
+    console.log("  Has 'response' key:", !!data.response);
+    console.log("  Has 'records' key:", !!data.response?.records);
+    console.log("  Records count:", data.response?.records?.length);
+
+    // Validate response structure
+    const records2 = data?.response?.records;
+    if (!records || !Array.isArray(records)) {
+      console.error("❌ Full response structure:", JSON.stringify(data, null, 2));
+      throw new Error("Invalid response structure - no records found");
+    }
+
+    // 🔍 DEBUG: What serial numbers are available?
+    console.log("📋 Available Serial Numbers:");
+    records2.forEach((record, index) => {
+      const serialField = record.find(f => f?.name === "Serial No");
+      if (serialField) {
+        console.log(`  [${index}] Serial No: ${serialField.value}`);
+      }
+    });
+
 
     // Validate response structure
     const records = data?.response?.records;
@@ -47,8 +71,8 @@ export async function checkSeats() {
     }
 
     // Find the specific BMC record
-    const bmcRecord = records.find(record => 
-      Array.isArray(record) && record.some(field => 
+    const bmcRecord = records.find(record =>
+      Array.isArray(record) && record.some(field =>
         field?.name === "Serial No" && field?.value === process.env.SERIAL_NO
       )
     );
@@ -58,7 +82,7 @@ export async function checkSeats() {
     }
 
     // Extract available seats
-    const availableSeatsField = bmcRecord.find(field => 
+    const availableSeatsField = bmcRecord.find(field =>
       field?.name === "Available Seats"
     );
 
@@ -69,7 +93,7 @@ export async function checkSeats() {
     const seats = availableSeatsField.value;
     console.log("✅ Available Seats:", seats);
     return seats;
-    
+
   } catch (error) {
     console.error("❌ Error in checkSeats:", error.message);
     return null;
