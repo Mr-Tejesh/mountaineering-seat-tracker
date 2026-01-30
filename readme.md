@@ -256,7 +256,7 @@ We pair-programmed this beast together, debugged API responses at midnight (okay
 
 ## 🙏 Acknowledgments
 
-- ☕ Powered by coffee (for the human) and electrons (for Claude)
+- ☕ Powered by morning sun (for the human) and electrons (for Claude)
 - 🏔️ Inspired by the love of mountains
 - 📱 Built with ntfy.sh - seriously, check them out!
 - 🎨 Emojis make everything better
