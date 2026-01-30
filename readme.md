@@ -8,6 +8,8 @@ An automated seat availability checker for BMC (Basic Mountaineering Course) tha
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
+> ⚠️ **Important Note:** This tool is specifically built for **[NIMAS Dirang Institute](https://nimasdirang.com/)**. If you're checking availability for other mountaineering institutes, you'll need to modify the API endpoints and configuration accordingly.
+
 ---
 
 ## 🎯 What Does This Do?
