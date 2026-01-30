@@ -1,20 +1,17 @@
 {
   "name": "mountaineering-seat-tracker",
   "version": "1.0.0",
-  "description": "",
+  "description": "Automated BMC seat availability checker and notifier",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "node --watch index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Mr-Tejesh/mountaineering-seat-tracker.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Mr-Tejesh/mountaineering-seat-tracker/issues"
-  },
-  "homepage": "https://github.com/Mr-Tejesh/mountaineering-seat-tracker#readme"
+  "keywords": ["bmc", "seats", "notification", "automation"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
 }
