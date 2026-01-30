@@ -46,7 +46,7 @@ export async function checkSeats() {
     console.log("  Has 'response' key:", !!data.response);
     console.log("  Has 'records' key:", !!data.response?.records);
     console.log("  Records count:", data.response?.records?.length);
-
+    console.log("Api respone: ", data)
     // Validate response structure
     const records2 = data?.response?.records;
     if (!records2 || !Array.isArray(records2)) {
