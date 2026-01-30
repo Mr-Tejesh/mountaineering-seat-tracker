@@ -175,9 +175,30 @@ CATEGORY_NAME=Advanced Mountaineering  # or whatever you need
 SERIAL_NO=AMC-42                       # the specific course code
 ```
 
-## 🤖 Automation with Cron
+## 🤖 Automation Options
 
-Want this to run automatically? Set up a cron job!
+### Option 1: GitHub Actions (Recommended! ⭐)
+
+Run this automatically on GitHub's servers - no need to keep your computer on!
+
+**Schedule:** 4:00 AM, 2:00 PM, and 8:30 PM IST daily
+
+**Setup:**
+
+1. Push your code to GitHub
+2. Add your environment variables as GitHub Secrets
+3. Done! It runs automatically
+
+👉 **[Full GitHub Actions Setup Guide](GITHUB_ACTIONS_SETUP.md)**
+
+**Why GitHub Actions?**
+
+- ✅ Runs even when your laptop is off
+- ✅ Free for public repos (2,000 minutes/month)
+- ✅ No server maintenance needed
+- ✅ Easy to monitor and debug
+
+### Option 2: Local Cron/Task Scheduler
 
 **Linux/Mac:**
 
@@ -185,23 +206,21 @@ Want this to run automatically? Set up a cron job!
 # Edit crontab
 crontab -e
 
-# Add this line to run every 2 hours
-0 */2 * * * cd /path/to/bmc-seat-checker && /usr/bin/node index.js
-
-# Or run twice a day (9 AM and 6 PM)
-0 9,18 * * * cd /path/to/bmc-seat-checker && /usr/bin/node index.js
+# Run three times a day (4 AM, 2 PM, 8:30 PM)
+0 4 * * * cd /path/to/bmc-seat-checker && node index.js
+0 14 * * * cd /path/to/bmc-seat-checker && node index.js
+30 20 * * * cd /path/to/bmc-seat-checker && node index.js
 ```
 
-**Windows:**
-Use Task Scheduler:
+**Windows Task Scheduler:**
 
 1. Open Task Scheduler
 2. Create Basic Task
-3. Set trigger (Daily, with repetition)
-4. Action: Start a program
-5. Program: `node.exe`
-6. Arguments: `index.js`
-7. Start in: `C:\path\to\bmc-seat-checker`
+3. Set trigger times (4 AM, 2 PM, 8:30 PM)
+4. Program: `node.exe`, Arguments: `index.js`
+5. Start in: `C:\path\to\bmc-seat-checker`
+
+> ⚠️ **Note:** Your computer must be on and running for local automation to work!
 
 ## 🐛 Troubleshooting
 
@@ -258,7 +277,7 @@ We pair-programmed this beast together, debugged API responses at midnight (okay
 
 ## 🙏 Acknowledgments
 
-- ☕ Powered by morning sun (for the human) and electrons (for Claude)
+- 🌅 Powered by morning sun and sheer determination (for the human) and electrons (for Claude)
 - 🏔️ Inspired by the love of mountains
 - 📱 Built with ntfy.sh - seriously, check them out!
 - 🎨 Emojis make everything better
@@ -274,7 +293,7 @@ This is an unofficial tool and is not affiliated with or endorsed by any mountai
 
 _Remember: The mountains are calling, and you must go! 🏔️_
 
-_P.S. - If this bot saves you from missing your BMC slot, you owe us both a virtual high-five! 🙌_
+_P.S. - If this bot saves you from missing your BMC slot, we'll take that high-five! 🙌_
 
 ---
 
