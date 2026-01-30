@@ -12,11 +12,12 @@ export async function checkSeats() {
     console.log("🔍 Environment Check:");
     console.log("  API_URL exists:", !!process.env.API_URL);
     console.log("  NOTIFICATION_URL exists:", !!process.env.NOTIFICATION_URL);
-    console.log("  TEMPLATE_ID:", process.env.TEMPLATE_ID);
-    console.log("  CATEGORY_NAME:", process.env.CATEGORY_NAME);
-    console.log("  SERIAL_NO:", process.env.SERIAL_NO);
-    console.log("  PAGE_SIZE:", process.env.PAGE_SIZE);
-    
+    console.log("  TEMPLATE_ID:", !!process.env.TEMPLATE_ID);
+    console.log("  CATEGORY_NAME:", !!process.env.CATEGORY_NAME);
+    console.log("  SERIAL_NO:", !!process.env.SERIAL_NO);
+    console.log("  PAGE_SIZE:", !!process.env.PAGE_SIZE);
+    console.log("  AUTH_KEY:", !!process.env.AUTH_KEY);
+
     const response = await fetch(process.env.API_URL, {
       method: "POST",
       body: JSON.stringify({
@@ -29,7 +30,7 @@ export async function checkSeats() {
       }),
       headers: {
         "Content-type": "application/json;charset=UTF-8",
-        "Authorization-Token": "oq+R3B3lt5I1bybDbHvscBRQDkBF8ek9cciW21c2Lza9XNAKeGE13bKO1giqxZ/uL2fM+m2QLjbSkMpBo3qM9DqDqDv7SojZA+5WpHVMh+tsnC9HUXan4CKJ8/bI4/2Lqa7DMzLXd1LqL9KA1iuY8g=="
+        "Authorization-Token": process.env.AUTH_KEY
       }
     });
 
