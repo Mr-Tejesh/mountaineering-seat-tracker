@@ -7,6 +7,16 @@ dotenv.config();
  */
 export async function checkSeats() {
   try {
+
+        // Debug: Check if environment variables are set (without exposing values)
+    console.log("🔍 Environment Check:");
+    console.log("  API_URL exists:", !!process.env.API_URL);
+    console.log("  NOTIFICATION_URL exists:", !!process.env.NOTIFICATION_URL);
+    console.log("  TEMPLATE_ID:", process.env.TEMPLATE_ID);
+    console.log("  CATEGORY_NAME:", process.env.CATEGORY_NAME);
+    console.log("  SERIAL_NO:", process.env.SERIAL_NO);
+    console.log("  PAGE_SIZE:", process.env.PAGE_SIZE);
+    
     const response = await fetch(process.env.API_URL, {
       method: "POST",
       body: JSON.stringify({
