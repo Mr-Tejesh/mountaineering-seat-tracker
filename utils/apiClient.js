@@ -49,7 +49,7 @@ export async function checkSeats() {
 
     // Validate response structure
     const records2 = data?.response?.records;
-    if (!records || !Array.isArray(records)) {
+    if (!records2 || !Array.isArray(records2)) {
       console.error("❌ Full response structure:", JSON.stringify(data, null, 2));
       throw new Error("Invalid response structure - no records found");
     }
