@@ -30,7 +30,7 @@ export async function checkSeats() {
       }),
       headers: {
         "Content-type": "application/json;charset=UTF-8",
-        "Authorization-Token": process.env.AUTH_KEY
+        "Authorization-Token": `"${process.env.AUTH_KEY}"`
       }
     });
 
