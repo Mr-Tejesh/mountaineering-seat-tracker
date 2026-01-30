@@ -8,16 +8,6 @@ dotenv.config();
 export async function checkSeats() {
   try {
 
-    // Debug: Check if environment variables are set (without exposing values)
-    console.log("🔍 Environment Check:");
-    console.log("  API_URL exists:", !!process.env.API_URL);
-    console.log("  NOTIFICATION_URL exists:", !!process.env.NOTIFICATION_URL);
-    console.log("  TEMPLATE_ID:", !!process.env.TEMPLATE_ID);
-    console.log("  CATEGORY_NAME:", !!process.env.CATEGORY_NAME);
-    console.log("  SERIAL_NO:", !!process.env.SERIAL_NO);
-    console.log("  PAGE_SIZE:", !!process.env.PAGE_SIZE);
-    console.log("  AUTH_KEY:", !!process.env.AUTH_KEY);
-
     const response = await fetch(process.env.API_URL, {
       method: "POST",
       body: JSON.stringify({
@@ -30,7 +20,7 @@ export async function checkSeats() {
       }),
       headers: {
         "Content-type": "application/json;charset=UTF-8",
-        "Authorization-Token": `"${process.env.AUTH_KEY}"`
+        "Authorization-Token": process.env.AUTH_KEY
       }
     });
 
@@ -47,22 +37,6 @@ export async function checkSeats() {
     console.log("  Has 'records' key:", !!data.response?.records);
     console.log("  Records count:", data.response?.records?.length);
     console.log("Api respone: ", data)
-    // Validate response structure
-    const records2 = data?.response?.records;
-    if (!records2 || !Array.isArray(records2)) {
-      console.error("❌ Full response structure:", JSON.stringify(data, null, 2));
-      throw new Error("Invalid response structure - no records found");
-    }
-
-    // 🔍 DEBUG: What serial numbers are available?
-    console.log("📋 Available Serial Numbers:");
-    records2.forEach((record, index) => {
-      const serialField = record.find(f => f?.name === "Serial No");
-      if (serialField) {
-        console.log(`  [${index}] Serial No: ${serialField.value}`);
-      }
-    });
-
 
     // Validate response structure
     const records = data?.response?.records;
