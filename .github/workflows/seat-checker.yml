@@ -39,6 +39,7 @@ jobs:
           SERIAL_NO: ${{ secrets.SERIAL_NO }}
           PAGE_SIZE: ${{ secrets.PAGE_SIZE }}
           AUTH_KEY: ${{ secrets.AUTH_KEY }}
+          FILTER_DISABLE: "1"
         run: npm start
 
       - name: 📊 Display results

@@ -8,6 +8,22 @@ dotenv.config();
 export async function checkSeats() {
   try {
 
+    // 👇 ADD THIS - REPLACES the old request body
+    const filters = process.env.FILTER_DISABLE === '1'
+      ? {}
+      : { "Category Name": process.env.CATEGORY_NAME };
+
+    const requestBody = {
+      "NumberOfFieldsView": 50,
+      filters,  // 👈 Uses the conditional filters
+      "isDownload": false,
+      "index": 1,
+      "pgSize": parseInt(process.env.PAGE_SIZE),
+      "templateID": parseInt(process.env.TEMPLATE_ID)
+    };
+
+    console.log("📤 Sending request with filters:", Object.keys(filters).length === 0 ? "DISABLED" : JSON.stringify(filters));
+
     const response = await fetch(process.env.API_URL, {
       method: "POST",
       body: JSON.stringify({
@@ -30,6 +46,10 @@ export async function checkSeats() {
 
     // Add this right after getting the data, around line 44
     const data = await response.json();
+    console.log("📊 totalRecords:", data.response?.totalRecords);
+    console.log("📊 filters:", data.response?.inputData?.filters);
+    console.log("📊 templateID:", data.response?.inputData?.templateID);
+
 
     // 🔍 DEBUG: Log the actual response structure
     console.log("📊 API Response Debug:");
